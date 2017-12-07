@@ -1,0 +1,114 @@
+
+<html lang='en'>
+    <head>
+        <title>Puzzle It Up</title>
+        <script src="jquery-1.7.2.js" type="text/javascript"></script>
+        <script src="jquery.ui.core.js" type="text/javascript"></script>
+        <script src="jquery.ui.widget.js" type="text/javascript"></script>
+        <script src="jquery.ui.mouse.js" type="text/javascript"></script>
+        <script src="jquery.ui.sortable.js" type="text/javascript"></script>
+        <script src="jquery.runner-min.js"></script>
+        <style>
+        body
+        {
+            font-family: Segoe UI;
+            background-image: url("bg.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    
+        {
+
+            max-width: 230px;
+            overflow: hidden;
+        }
+      #sortable { list-style-type: none; margin: 0px auto;}
+            #sortable li { float: left;}       
+        </style>
+        <script type="text/javascript">
+             var i=1;
+            $(function() {
+                $("#sortable").sortable({
+                    opacity: 0.6,
+                    cursor: 'move',
+                    update: function() {
+                        var winningString = "one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve";
+                        var currentString = '';
+                       
+                        $('#sortable li').each(function(){
+                            var imageId = $(this).attr("id");
+                            currentString += imageId.replace("recordArr_", "")+",";
+
+                        });
+                        
+                        currentString = currentString.substr(0,(currentString.length) -1);
+                        $("#score").text("SCORE: "+i++);
+                        if(currentString == winningString){
+                            alert("You  Won Your Score is "+i);
+                            currentString='';
+
+                        }
+                        console.log(currentString);
+                    }
+                });
+
+            });
+        </script>
+    </head>
+
+    <body>
+	<div class="" style="text-align: center;">Drag and Drop Images and Solve the       Puzzle</div>
+    <div style="text-align: center;"> <span id="runner3" style="margin: 10px auto"></span></div> 
+    <div><h4 id="score" style="text-align: center;font-size: 2em">SCORE: 0</h4></div>
+    <div style="width: auto;padding: 10px; background-color:rgba(0,0,0,0.5);">
+        <ul id='sortable' style='width:750px;height:1000px;'>
+                            <li class='ui-state-default' id='recordArr_twelve' style='border:none;width:244px;height:244px;'>
+                            <img src='Images/twelve.jpg' /></li>
+                            
+                            <li class='ui-state-default' id='recordArr_eleven' style='border:none;width:244px;height:244px;'>
+                            <img src='Images/eleven.jpg' /></li>
+
+
+                            <li class='ui-state-default' id='recordArr_ten' style='border:none;width:244px;height:244px;'>   
+                            <img src='Images/ten.jpg' /></li>
+
+                            <li class='ui-state-default' id='recordArr_nine' style='border:none;width:244px;height:244px;'>
+                            <img src='Images/nine.jpg' /></li>
+
+                            <li class='ui-state-default' id='recordArr_eight' style='border:none;width:244px;height:244px;'>
+                            <img src='Images/eight.jpg' /></li>
+
+                            <li class='ui-state-default' id='recordArr_seven' style='border:none;width:244px;height:244px;'>
+                            <img src='Images/seven.jpg' /></li>
+
+                            <li class='ui-state-default' id='recordArr_six' style='border:none;width:244px;height:244px;'>
+                            <img src='Images/six.jpg' /></li>
+
+                            <li class='ui-state-default' id='recordArr_five' style='border:none;width:244px;height:244px;'>
+                            <img src='Images/five.jpg' /></li>
+
+                            <li class='ui-state-default' id='recordArr_four' style='border:none;width:244px;height:244px;'>
+                            <img src='Images/four.jpg' /></li>
+
+                            <li class='ui-state-default' id='recordArr_three' style='border:none;width:244px;height:244px;'>
+                            <img src='Images/three.jpg' /></li>
+
+                            <li class='ui-state-default' id='recordArr_two' style='border:none;width:244px;height:244px;'>
+                            <img src='Images/two.jpg' /></li>
+
+                            <li class='ui-state-default' id='recordArr_one' style='border:none;width:244px;height:244px;'>
+                            <img src='Images/one.jpg' /></li></ul>
+</div>
+                           
+<script>
+$('#runner3').runner({
+    
+    autostart: true,
+    startAt: 0,
+    stopAt:3000000
+});
+</script>
+
+    </body>
+</html>
+
